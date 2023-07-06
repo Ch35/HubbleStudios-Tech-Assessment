@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center">
+    <form action="{{config.wwwroot}}/local/movies/index.php" method="GET" class="mform form-inline simplesearchform">
+        <div class="input-group">
+            <input type="text" name="search" value="{{search}}" class="form-control" placeholder="Search">
+
+            <button type="submit" class="btn btn-primary">
+                <i class="icon fa fa-search fa-fw m-0" aria-hidden="true"></i>
+                <span class="sr-only">Search</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+{{> local_movies/pagination }}
+
+{{> local_movies/movie }}
+
+{{# results.0 }}
+<div class="m-4 row bg-light rounded p-4 justify-center">
+    {{#results}}
+        <div class="col-md-3 col-sm-6 text-center mb-3">
+            <a href="{{config.wwwroot}}/local/movies/?id={{imdbID}}&search={{search}}" class="text-decoration-none">
+                {{# Poster }}<img src="{{Poster}}" alt="{{Title}} Poster Image" class="img-fluid rounded">{{/ Poster }}
+                <p>{{Title}} ({{Year}})</p>
+            </a>
+        </div>
+    {{/results}}
+</div>
+{{/ results.0 }}
+
+{{> local_movies/pagination }}
